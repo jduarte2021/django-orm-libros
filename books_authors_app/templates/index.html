@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libros y Autores Proyecto Django ORM</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+</head>
+
+<body>
+
+    <h1 class="page-header text-center">Libros y Autores</h1>
+    
+    <div class="container">
+        <div class="row">
+        <a class = "page-header text-center" href="/autores"> Ingresar Autores</a>
+            <!-- columa de ingreso de libro -->
+            <div class="col">
+            <h3 class="">Ingresa tu libro</h3>
+                <form action= 'ingresar_libro' method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="title-id" class ="form-label">Titulos:</label>
+                        <input type="text" class="form-control" id="title-id" name="title">
+                    </div>
+                    <br>
+                    <div class="mb-3">
+                        <label for="desc-id" class ="form-label">Descripcion:</label>
+                        <input type="text" class="form-control" id="desc-id" name="desc">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+
+            </div>
+            <!-- columna de muestra de tablas de libros  -->
+            <div class="col">
+                <h2>Libros</h2>
+                <table class="table table-dark table-striped table-hover scroll">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre libro</th>
+                            <th>Descripcion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for all in libros %}
+                        <tr>
+                            <td>{{ all.id }}</td>
+                            <td>{{ all.title }}</td>
+                            <td>{{ all.desc }}</td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

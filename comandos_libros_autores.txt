@@ -1,0 +1,136 @@
+
+#Libros
+
+In [3]: from books_authors_app.models import Book,Author
+
+In [4]: libro_csharp = Book.objects.create(title = "C Sharp", desc = "Libro de  lenguaje C")
+
+In [5]: libro_java = Book.objects.create(title = "Java", desc = "Libro de  lenguaje Java")
+
+In [6]: libro_python = Book.objects.create(title = "Python", desc = "Libro de  lenguaje Python")
+
+In [7]: libro_php = Book.objects.create(title = "PHP", desc = "Libro de  lenguaje PHP")
+
+In [8]: libro_ruby = Book.objects.create(title = "Ruby", desc = "Libro de  lenguaje Ruby")
+
+#Autores
+
+In [9]: autor_janeausten = Author.objects.create(first_name = "Jane", last_name = "Austen")
+
+In [10]: autor_emilydickinson = Author.objects.create(first_name = "Emily", last_name = "Dickinson")
+
+In [11]: autor_fyodordostoevksy = Author.objects.create(first_name = "Fyodor", last_name = "Dostoevksy")
+
+In [12]: autor_williamshakespeare = Author.objects.create(first_name = "William", last_name = "Shakespeare")
+
+In [13]: autor_lautzu = Author.objects.create(first_name = "Lau", last_name = "Tzu")
+
+
+#Cambio nombre 
+
+In [13]: cambio = Book.objects.get(id=1)
+
+In [14]: cambio.title = "C #"
+
+In [15]: cambio.save()
+
+#Cambio autor 
+
+cambio_autor = Author.objects.get(id=4)
+
+In [17]: cambio_autor.first_name = "Bill"
+
+In [18]: cambio_autor.save()
+
+# Asigna autores 
+
+In [19]: primer_autor = Author.objects.get(id=1)
+
+In [21]: asigna_libro1 = Book.objects.get(id=1)
+
+In [22]: asigna_libro2 = Book.objects.get(id=2)
+
+In [23]: primer_autor.books.add(asigna_libro1)
+
+In [24]: primer_autor.books.add(asigna_libro2)
+
+
+#Segundo autor, 3 libros 
+
+In [25]: segundo_autor = Author.objects.get(id=2)
+
+In [27]: asigna_libro3 = Book.objects.get(id=3)
+
+In [28]: segundo_autor.books.add(asigna_libro1)
+
+In [29]: segundo_autor.books.add(asigna_libro2)
+
+In [30]: segundo_autor.books.add(asigna_libro3)
+
+
+#Tercer autor, 4 libros   
+
+In [31]: tercer_autor = Author.objects.get(id=3)
+
+In [32]: asigna_libro4 = Book.objects.get(id=4)
+
+In [33]: asigna_libro5 = Book.objects.get(id=5)
+
+In [34]: tercer_autor.books.add(asigna_libro1)
+
+In [35]: tercer_autor.books.add(asigna_libro2)
+
+In [36]: tercer_autor.books.add(asigna_libro3)
+
+In [37]: tercer_autor.books.add(asigna_libro4)
+
+#Cuarto autor, 5 libros  
+
+In [38]: cuarto_autor = Author.objects.get(id=4)
+
+In [39]: cuarto_autor.books.add(asigna_libro1)
+
+In [40]: cuarto_autor.books.add(asigna_libro2)
+
+In [41]: cuarto_autor.books.add(asigna_libro3)
+
+In [42]: cuarto_autor.books.add(asigna_libro4)
+
+In [43]: cuarto_autor.books.add(asigna_libro5)
+
+#Recupera a todos del tercer 
+
+In [48]: tercer_libro = Book.objects.get(id=3)
+
+In [54]: tercer = tercer_libro.authors.all()
+
+In [55]: print(tercer)
+
+#Eliminar al primer autor del tercer libro
+
+
+
+#Agregue quinto autor          
+In [65]: quinto_autor = Author.objects.get(id=5)
+
+In [66]: quinto_autor.books.add(asigna_libro2)
+
+
+#libros del 3er autor
+
+In [80]: tercero = Author.objects.get(id=3)
+
+In [81]: tercero.books.all()
+Out[81]: <QuerySet [C #, Java, Python, PHP]>
+
+
+
+#Autores del quinto libro
+
+In [76]: quinto = Book.objects.get(id=5)
+
+In [77]: print(quinto)
+PHP
+
+In [78]: quinto.authors.all()
+Out[78]: <QuerySet [Bill Shakespeare  books_authors_app.Book.None]>
