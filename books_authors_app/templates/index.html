@@ -46,7 +46,8 @@
                         <tr>
                             <th>ID</th>
                             <th>Nombre libro</th>
-                            <th>Descripcion</th>
+                            <th>Descripcion</th> c
+                            <th>Informacion</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,6 +56,7 @@
                             <td>{{ all.id }}</td>
                             <td>{{ all.title }}</td>
                             <td>{{ all.desc }}</td>
+                            <td><a href ="libro_info/{{all.id}}">Ver mas</a></td>
                         </tr>
                         {% endfor %}
 

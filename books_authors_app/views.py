@@ -1,17 +1,24 @@
 from django.shortcuts import render, redirect
 from .models import Book,Author
 
+
+
+
 def index(request):
     context = {
         'libros': Book.objects.all(),
     }
     return render(request, 'index.html', context)
 
+
+
 def autor(request):
     context = {
         'autor': Author.objects.all(),
     }
     return render(request, 'authors.html', context)
+
+
 
 
 def ingresar_libro(request):
@@ -25,6 +32,8 @@ def ingresar_libro(request):
     return redirect("/")
 
 
+
+
 def ingresar_autor(request):
     print(request.POST)
     autor = Author.objects.create(
@@ -34,3 +43,22 @@ def ingresar_autor(request):
     )
     return redirect("/autores")
 
+
+
+def libro_info(request,id):
+    context = {
+        'libro1' : Book.objects.get(id=id),
+        'libro2' : Author.objects.all(),
+    }
+
+    return render(request, 'libros.html', context)
+
+
+
+def autores_info(request,id):
+    context = {
+        'autor1' : Author.objects.get(id=id),
+        'autor2' : Book.objects.all(),
+    }
+
+    return render(request, 'autores.html', context)

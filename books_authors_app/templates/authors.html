@@ -30,7 +30,7 @@
                     <br>
                     <div class="mb-3">
                         <label for="apellido-id" class ="form-label"><b>APELLIDO:</b></label>
-                        <input type="text" class="form-control" placeholder="Ingrese descripcion" id="apellido-id" name="last_name">
+                        <input type="text" class="form-control" placeholder="Ingrese apellido" id="apellido-id" name="last_name">
                     </div>
                     <br>
                     <div class="mb-3">
@@ -50,6 +50,7 @@
                             <th>ID</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
+                            <th>Accion</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,6 +59,7 @@
                             <td>{{ todo.id }}</td>
                             <td>{{ todo.first_name }}</td>
                             <td>{{ todo.last_name }}</td>
+                            <td><a href ="autor_info/{{ todo.id }}">Ver mas</a></td>
                         </tr>
                         {% endfor %}
 
